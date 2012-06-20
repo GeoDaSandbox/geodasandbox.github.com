@@ -1,0 +1,48 @@
+<p>To kick things off, we are going to first explain how to check out the repository we have setup on Github and get it up and running. You will only have to do this once and then you will be able to easily stay up to date and use all the code goodies we will be posting on the blog. Please note this is a first introductory post to get everyone on the same page; if you are familiar with version control software in general and git in particular, not much of this will be new.</p>
+
+<h2 id='check_out_the_code_repository'>Check out the code repository</h2>
+
+<p>Since we host the code on a Github repository, the first thing you need to do is to install git. Go to the download section of the official website, grab the binary that better suits your platform and follow the instructions, which are not much harder than click, click and boom, done!!! Now you are ready to check out the GeoDa Sandbox. Fire up a terminal and go to the folder where you want to download the repository:</p>
+
+<pre><code>cd /path/to_my_folder/</code></pre>
+
+<p>Then all the magic happens with the following command:</p>
+
+<pre><code>git clone https://github.com/GeoDaSandbox/sandbox.git</code></pre>
+
+<p>This tells git to go to the Github server, grab the GeoDa Sandbox folder and start a read-only copy in your local machine. You have now all the code in your computer.</p>
+
+<p>The sandbox is organized in different folders depending on the programming language used to write the code. Since we are pretty much a Python shop, one of the most important ones is &#8216;pyGDsandbox&#8217;. If you like Python as much as we do, you might want to add it to your python path so you can easily import code from there in your scripts.</p>
+
+<h2 id='add_the_python_folder_to_your_path'>Add the Python folder to your path</h2>
+
+<h3 id='nix_systems_linuxmac'>*nix systems (Linux/Mac)</h3>
+
+<p>Simply edit your &#8216;bash_profile&#8217;/&#8217;bashrc&#8217; file adding the path. Since it is hidden, you will have to use a terminal to uncover it. On the Mac, type:</p>
+
+<pre><code>open ~/.bash_profile</code></pre>
+
+<p>In linux you probably have to replace &#8216;open&#8217; by &#8216;gedit&#8217; or other editor of choice. This will open the file where Python looks at everytime you import a module. Add the following line at the bottom:</p>
+
+<pre><code>export PYTHONPATH=${PYTHONPATH}:&quot;/path/to_my_folder/sandbox/&quot;</code></pre>
+
+<p>Save and quit the file. Now go back to the terminal and source it:</p>
+
+<pre><code>source ~/.bash_profile</code></pre>
+
+<p>You are good to go! To make sure it works, open a python session and try to import, you should see a confirmation message like this:</p>
+
+<pre><code>&gt;&gt;&gt; from pyGDsandbox import install_test
+     
+         GeoDaSandbox Python module is up and running,
+         happy hacking!!!
+              
+&gt;&gt;&gt;</code></pre>
+
+<h2 id='updating_the_repository'>Updating the repository</h2>
+
+<p>One of the nice things of version control is that once you have checked out a repository, it is very easy to stay up to date and be able to enjoy the latest developments. In our case, anytime we add new code, you will only have update the folder with a simple command and the code will be ready to use in your computer. To do it, navigate to the folder on the terminal as before and type:</p>
+
+<pre><code>git pull</code></pre>
+
+<p>This will go look at the server and bring any new change we have commited. That easy!!!</p>

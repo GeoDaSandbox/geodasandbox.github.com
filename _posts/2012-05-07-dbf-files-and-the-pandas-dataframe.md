@@ -2,8 +2,9 @@
 layout: post
 title: "DBF files and the pandas DataFrame"
 description: ""
-category: 
+category: darribas
 tags: [pandas, pysal, dataIO]
+author: dani
 ---
 {% include JB/setup %}
 

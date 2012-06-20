@@ -1,0 +1,30 @@
+<p>DBF files and the pandas DataFrame</p>
+
+<p>For the last few days, I have been playing with <a href='http://pandas.pydata.org'>pandas</a>, a Python library that provides very nice data structures. If you are familiar with the R dataframe, pandas has a similar class that gives you most of the sweetness from R in Python, and some more. Check out the project site and have a look at <a href='http://blog.wesmckinney.com/'>Wes&#8217; site</a>, because it is under heavy development, constantly adding new features and improvements.</p>
+
+<p>Anyhow, the other day I was extracting some Census data to dump it from a csv into a dbf (so I could link it to a shapefile) and thought it would be useful to write a little interface from the DBF file format in and out to a pandas.DataFrame, using the easy API that PySAL provides. The <a href='https://github.com/GeoDaSandbox/sandbox/blob/master/pyGDsandbox/dataIO.py'>code</a> is already on GitHub under the dataIO module, so please go ahead and check it out. If you have the sandbox folder setup (see <a href='http://geodasandbox.github.com/2012/03/28/how-to-get-up-and-running-with-the-geoda-center-sandbox/'>here</a>), just import the functions:</p>
+
+<pre><code>&lt;div&gt;</code></pre>
+<pre><code class='python'>from pyGDsandbox.dataIO import df2dbf, dbf2df</code></pre><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;/div&gt;</pre>
+<p>Right now it is mostly two functions:</p>
+
+<pre><code>&lt;div&gt;</code></pre>
+<pre><code class='python'>df2dbf(df, dbf_path)</code></pre><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;/div&gt;</pre>
+<p>This allows you to quickly write out a DataFrame into a dbf file. Just pass in the DataFrame object and the desired path for the new dbf file to be created and you are good to go (if you are interested in specifying the DBF field specs yourself there is an option too, have a look at the documentation on the code). Note the DataFrame object needs to be &#8220;squared&#8221;, that is every column has to have the same number of rows. Combined with the nice alignment, join and merge options that pandas offers, it is pretty powerful to easily join data to a shapefile for instance.</p>
+
+<pre><code>&lt;div&gt;</code></pre>
+<pre><code class='python'>dbf2df(dbf_path)</code></pre><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;/div&gt;</pre>
+<p>The second option reads in a file straight into a DataFrame. Very straight forward, the header becomes the name of the columns and the whole file is read in. If you are interested only in a few columns, you can pass those in and only they will be read. The following command will only read &#8216;VAR1&#8217; and &#8216;VAR2&#8217; from &#8216;dbf_path&#8217;:</p>
+
+<pre><code>&lt;div&gt;</code></pre>
+<pre><code class='python'>dbf2df(dbf_path, cols=['VAR1', 'VAR2'])</code></pre><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;/div&gt;</pre>
+<p>Finally, if you want any of the columns to be used as the DataFrame index, just pass it like this:</p>
+
+<pre><code>&lt;div&gt;</code></pre>
+<pre><code class='python'>dbf2df(dbf_path, index='my_index_var')</code></pre><pre style='border: solid 3px red; background-color: pink' class='markdown-html-error'>REXML could not parse this XML/HTML: 
+&lt;/div&gt;</pre>
+<p>This is a start for me to get familiar with the pandas data structures and it is by no means optimized or super efficient, so any idea or suggestion in that direction will be most welcome. Happy hacking!!!</p>
